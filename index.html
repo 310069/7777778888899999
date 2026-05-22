@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小龍的魔法書</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #4a4e69;
+            --accent: #9a8c98;
+            --bg: #fdfaf6;
+            --magic-gold: #d4a373;
+        }
+
+        body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; background: var(--bg); color: #333; overflow-x: hidden; }
+
+        header {
+            background: rgba(74, 78, 105, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.4rem; font-weight: bold; letter-spacing: 1px; }
+        .nav { display: flex; list-style: none; }
+        .nav-item { margin-left: 20px; font-weight: bold; cursor: pointer; color: white; text-decoration: none; }
+        .nav-item:hover { color: var(--magic-gold); }
+
+        /* 頂部精選輪播 */
+        .hero-section { padding: 30px 0; background: #fff; }
+        .swiper { width: 90%; max-width: 850px; height: 450px; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .swiper-slide { display: flex; align-items: center; justify-content: center; background: #fff; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: contain; }
+
+        /* 內容區塊 */
+        .container { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
+        .category-title { 
+            font-size: 1.6rem; color: var(--primary); margin: 50px 0 20px; 
+            padding-left: 15px; border-left: 5px solid var(--magic-gold);
+        }
+
+        /* 橫式圖文清單 */
+        .report-list { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        
+        .report-item {
+            display: flex; background: white; border-radius: 15px; overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); height: 140px; position: relative;
+            transition: 0.3s;
+        }
+        .report-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        
+        /* 左側照片微縮圖 */
+        .item-img { width: 140px; min-width: 140px; height: 140px; background: #f0f0f0; }
+        .item-img img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* 右側文字說明區 */
+        .item-content { padding: 15px 20px; display: flex; flex-direction: column; justify-content: flex-start; flex-grow: 1; padding-right: 130px; }
+        .item-content h3 { margin: 0 0 6px; font-size: 1.15rem; color: #2c3e50; }
+        .item-content p { margin: 0; font-size: 0.85rem; color: #666; line-height: 1.4; }
+        
+        /* 瀏覽報告按鈕 */
+        .btn-browse {
+            position: absolute; right: 20px; bottom: 15px;
+            background: var(--primary); color: white; text-decoration: none;
+            padding: 6px 14px; font-size: 0.8rem; font-weight: bold;
+            border-radius: 6px; box-shadow: 0 2px 6px rgba(74,78,105,0.2);
+            transition: 0.2s;
+        }
+        .btn-browse:hover { background: var(--magic-gold); }
+
+        footer { text-align: center; padding: 40px; background: var(--primary); color: white; margin-top: 60px; }
+
+        @media (max-width: 600px) {
+            .swiper { height: 300px; }
+            .report-item { height: auto; flex-direction: column; }
+            .item-img { width: 100%; height: 160px; }
+            .item-content { padding: 15px; padding-bottom: 50px; padding-right: 20px; }
+            .btn-browse { right: 15px; bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">✨ 小龍的魔法書</div>
+    <div class="nav">
+        <a href="#self" class="nav-item">自主學習</a>
+        <a href="#explore" class="nav-item">探究</a>
+        <a href="#extend" class="nav-item">科目延伸</a>
+    </div>
+</header>
+
+<section class="hero-section" data-aos="fade-down">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1BLQp_YwzvBMQ1EGHSptBdOSrSstkpBiq" alt="營養自主"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1fcWpFNknNp4wrdjg6S929IdsBgVj3N-G" alt="英文戲劇"></div>
+            <div class="swiper-slide"><img src="https://lh3.googleusercontent.com/d/1mii-dhymV1mSH_chrA2lDDFfxR2egHvT" alt="選修生物"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+
+<div class="container">
+    
+    <h2 id="self" class="category-title" data-aos="fade-right">自主學習</h2>
+    <div class="report-list">
+        
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1BLQp_YwzvBMQ1EGHSptBdOSrSstkpBiq" alt="營養"></div>
+            <div class="item-content">
+                <h3>自主學習-營養</h3>
+                <p>探索現代營養學與日常飲食調配，內含個人化膳食計畫與深入的健康數據追蹤分析。</p>
+            </div>
+            <a href="https://canva.link/1fpjzu0lrkaytij" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="http://googleusercontent.com/profile/picture/15" alt="蔬果加工"></div>
+            <div class="item-content">
+                <h3>自主學習-蔬果加工</h3>
+                <p>食品加工技術實作！詳細紀錄蔬菜與水果的加工原理、實驗步驟與成品保存成果。</p>
+            </div>
+            <a href="https://canva.link/cgmaxnv4ekhbalb" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="http://googleusercontent.com/profile/picture/16" alt="副食品分析"></div>
+            <div class="item-content">
+                <h3>自主學習-副食品分析</h3>
+                <p>從嬰幼兒發展與家政生物角度出發，解構不同成長階段副食品的營養配比與調製要點。</p>
+            </div>
+            <a href="https://canva.link/ekzjir69k3zza13" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1CNoDGUqpFgi2YYEuhn7mS9XNuI9MAnSG" alt="台大醫學營隊"></div>
+            <div class="item-content">
+                <h3>台大醫學營隊成果</h3>
+                <p>參與頂尖大學醫學營隊的實務操作與學習紀錄，點燃對醫學與生醫領域的深度探索熱情。</p>
+            </div>
+            <a href="https://canva.link/yr95uiu38jmteg7" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+    </div>
+
+    <h2 id="explore" class="category-title" data-aos="fade-right">探究</h2>
+    <div class="report-list">
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1U5uxjaKjWM4wWr4LtL9kmISBK7syRo3r" alt="探究實作"></div>
+            <div class="item-content">
+                <h3>探究與實作-彭巴效應</h3>
+                <p>針對特定自然現象展開科學探究，包含嚴謹的實驗假設、變因控制與動態數據模型分析。</p>
+            </div>
+            <a href="https://canva.link/yb6sksofiu0402j" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1UEbTnrr8-P9m-pIaAdYPeyREqC19w5kC" alt="骨牌"></div>
+            <div class="item-content">
+                <h3>高二骨牌比賽</h3>
+                <p>團隊合作與機構設計的精彩碰撞！精密計算物理軌道、重力加速度與連鎖反應的歷程紀錄。</p>
+            </div>
+            <a href="https://canva.link/lkof6p5tg4qvmw4" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+    </div>
+
+    <h2 id="extend" class="category-title" data-aos="fade-right">科目延伸</h2>
+    <div class="report-list">
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1mii-dhymV1mSH_chrA2lDDFfxR2egHvT" alt="選修生物"></div>
+            <div class="item-content">
+                <h3>選修生物 1</h3>
+                <p>高中生物核心課堂的延伸探索，針對細胞學、分子生物或生理機能進行進階文獻探討。</p>
+            </div>
+            <a href="https://canva.link/gb7k1j1pvpmwqh4" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1NaJC_r5gr5XfXEbxjlBdhCugFaqviG07" alt="英文作文"></div>
+            <div class="item-content">
+                <h3>英文作文選修</h3>
+                <p>精選多篇邏輯架構完整的寫作作品，展現個人英文批判性思考、修辭與進階語文素養。</p>
+            </div>
+            <a href="https://canva.link/u8k6po5bt7xmegp" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1vRDUiJX49vx9UqElPHq6RVWPb95SZSqy" alt="歷史"></div>
+            <div class="item-content">
+                <h3>高一校外教學-歷史</h3>
+                <p>實地走訪古蹟與人文地景，結合在地文史脈絡與實地考察成果的整合性社會領域報告。</p>
+            </div>
+            <a href="https://canva.link/3gydso53e81s9it" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1dpdQnM1cmcrcEXcJj23ksrtAhAP2ykDL" alt="音樂海報"></div>
+            <div class="item-content">
+                <h3>音樂海報設計</h3>
+                <p>結合美學與數位工具，深入剖析特定音樂流派或名家歷史的視覺創意專案。</p>
+            </div>
+            <a href="https://canva.link/z7bah2df97nga1x" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1GyFwuRrqOJsN5JCkoRA7_CP9UmWrFnSi" alt="多元選修"></div>
+            <div class="item-content">
+                <h3>多元選修專題</h3>
+                <p>跨領域課程的學習軌跡累積，展現跳脫傳統框架、積極開拓跨界知識地圖的證明。</p>
+            </div>
+            <a href="https://canva.link/xey2bzu0qtszftu" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+        <div class="report-item" data-aos="fade-up">
+            <div class="item-img"><img src="https://lh3.googleusercontent.com/d/1h5THzvXYC85xN8hsDIT4iP6SqVgJ6PNx" alt="波妞"></div>
+            <div class="item-content">
+                <h3>電影介紹-崖上的波妞</h3>
+                <p>動畫電影的藝術賞析與敘事架構分析，探討宮崎駿導演於畫面底層傳遞的人文情感核心。</p>
+            </div>
+            <a href="https://canva.link/9xv06ufec985qbi" target="_blank" class="btn-browse">瀏覽報告</a>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    ✨ 小龍的魔法書 | 2026 學習歷程作品集 ✨
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: false });
+    new Swiper('.swiper', {
+        loop: true,
+        autoplay: { delay: 3500 },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+</script>
+
+</body>
+</html>
